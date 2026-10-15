@@ -1,0 +1,46 @@
+{% extends '_base.html' %}
+
+
+
+{% block title %}Guestbook{% endblock %}
+
+{% block content %}
+
+<div class="container py-4">
+    <h1 class="mb-4">Guestbook</h1>
+
+    {% for entry in entries %}
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    {{ entry.name }}
+                </h5>
+
+                <h6 class="card-subtitle mb-2 text-muted">
+                    {{ entry.created_at|date:"d M Y, H:i" }}
+                </h6>
+
+                <p class="card-text">
+                    {{ entry.comment|linebreaksbr }}
+                </p>
+
+                {% if entry.email %}
+                    <p class="card-text">
+                        <small class="text-muted">
+                            Email: {{ entry.email }}
+                        </small>
+                    </p>
+                {% endif %}
+
+            </div>
+        </div>
+    {% empty %}
+        <div class="alert alert-info">
+            There are no guestbook entries yet.
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
