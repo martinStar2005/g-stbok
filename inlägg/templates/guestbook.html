@@ -43,4 +43,45 @@
 
 </div>
 
+<form method="POST">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Namn</label>
+        <input
+            type="text"
+            name="name"
+            id="name"
+            class="form-control"
+            required
+        >
+    </div>
+
+    <div class="mb-3">
+        <label for="content" class="form-label">Kommentar</label>
+        <textarea
+            name="content"
+            id="comment"
+            class="form-control"
+            rows="4"
+            required
+        ></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input
+            type="email"
+            name="email"
+            id="name"
+            class="form-control"
+            required
+        >
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Skicka inlägg
+    </button>
+</form>
+
 {% endblock %}
